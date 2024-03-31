@@ -1,22 +1,4 @@
-<?php
-// Database connection variables
-$host = 'localhost';
-$dbname = 'hillsoft_real';
-$username = 'root';
-$password = '';
 
-try {
-    $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-    // Fetch slider content
-    $stmt = $pdo->query("SELECT news_title, news_detail FROM news");
-    $sliderContents = $stmt->fetchAll(PDO::FETCH_ASSOC);
-} catch (PDOException $e) {
-    echo "Database connection failed: " . $e->getMessage();
-    $sliderContents = []; // Ensure variable is initialized even if connection fails
-}
-?>
 
 
 <!DOCTYPE html>
